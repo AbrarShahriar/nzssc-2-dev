@@ -1,0 +1,226 @@
+.hero {
+    /* padding-top: 50px; */
+    height: 50vh;
+    overflow-x: hidden !important;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+    background-color: #0F1245;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    /* margin: 10px; */
+    margin-bottom: 50px;
+
+    /* outline: 2px solid red; */
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hero > img {
+    max-width: 500px;
+    position: relative;
+    z-index: 20;
+}
+
+.hero_title p {
+    font-size: 1.5em;
+    max-width: 400px;
+    margin-top: 10px;
+    margin-left: 20px;
+    line-height: 1.2em;
+    word-spacing: .2rem;
+    color: lightskyblue;
+}
+
+.hero_banner {
+    position: relative;
+    z-index: 20;
+}
+
+.hero_title .hero_banner img {
+    max-width: 500px;
+    /* outline: 2px solid red; */
+    margin-left: 20px;
+    object-fit: contain;
+}
+@media (min-width: 600px) {
+    .hero_title .hero_banner img  {
+        /* margin-left: -20px;
+        width: 130px; */
+    }
+}
+
+
+.zoom {
+    animation: zoom 700ms cubic-bezier(.54,.03,.37,1.47) 1500ms 1 forwards;
+    transform: scale(0);
+}
+@keyframes zoom {
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes opacityFull {
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.slideLeft {
+    animation: slideLeft 1s ease 1 forwards;
+    transform: translateX(-550px);
+}
+
+@keyframes slideLeft {
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.subtitle {
+    font-size: 3em;
+}
+
+
+.fadeUp {
+    animation: fadeUp 1s ease 1000ms 1 forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeUp {
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
+    fill: mintcream;
+
+    position: absolute;
+    z-index: 0;
+
+    opacity: 0;
+
+    top: 0;
+    left: 0;
+
+    animation: 
+        fadeIn      500ms  ease    500ms  forwards
+        ;
+}
+@media (max-width: 600px) {
+    .icon  {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.icon-1 {
+    top: 80%;
+    left: 60%;
+    /* animation-duration: 4s;
+    animation-delay: 1s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      2s ease-in 1s  infinite;
+}
+.icon-2 {
+    top: 100%;
+    left: 30%;
+    /* animation-duration: 5s;
+    animation-delay: 2s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      5s ease-in 2s  infinite;
+}
+.icon-3 {
+    top: 100%;
+    left: 80%;
+    /* animation-duration: 3s;
+    animation-delay: 1s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      3s ease-in 1s  infinite;
+}
+.icon-4 {
+    top: 50%;
+    left: 10%;
+    /* animation-duration: 7s;
+    animation-delay: 3s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      7s ease-in 3s  infinite;
+}
+.icon-5 {
+    top: 40%;
+    left: 90%;
+    /* animation-duration: 2s;
+    animation-delay: 500ms; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      2s ease-in 1.5s  infinite;
+}
+.icon-6 {
+    top: 30%;
+    left: 20%;
+    transform: rotate(-25deg);
+    /* animation-duration: 2s;
+    animation-delay: 4s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp6      2s ease-in 2s  infinite;
+}
+.icon-7 {
+    top: 100%;
+    left: 40%;
+    /* animation-duration: 7s;
+    animation-delay: 3s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      7s ease-in 1s  infinite;
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(-1300px) rotate(-25deg);
+    }
+}
+@keyframes moveUp6 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(-1300px);
+    }
+}
+
+@keyframes rotateIcon {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

@@ -1,14 +1,24 @@
 import { Announcement } from '@material-ui/icons'
 import React from 'react'
+import CardRow from '../components/CardRow'
+import Hero from '../components/Hero'
+import NewsCard from '../components/NewsCard'
 import Title from '../components/Title'
 import './Home.css'
 
 function Home() {
     return (
         <div className='home'>
-            <Title title='news' Icon={Announcement} />
 
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt accusantium nesciunt totam quaerat sed assumenda modi quas id odio porro. Voluptate, sed enim minus ex eligendi cupiditate obcaecati, libero magni, commodi accusantium ipsa. Ipsum maxime libero dolores possimus? Ea tenetur sed consequatur itaque odio reprehenderit voluptatum consequuntur cumque, illum, ab nisi aperiam necessitatibus velit explicabo? Ad, est accusamus. Porro veniam quaerat illum eum incidunt, voluptatem rem, perferendis iste officia obcaecati sequi sit suscipit, ratione ipsam non vero? Quis quos, qui ipsa blanditiis animi tenetur aspernatur ipsum deserunt dolor quia sunt similique beatae ex officiis recusandae odio dolores, perspiciatis repellendus adipisci consequuntur dolorem, quibusdam eos quas! Harum aliquam reprehenderit aut unde cupiditate obcaecati. Ex est vitae tempore corporis, quas minus dolorem explicabo molestias itaque, modi accusamus iste quis animi? Rem qui enim aliquam, ab nisi officia ipsa tempora, placeat accusantium quae id pariatur ex nam maxime ut cumque et molestiae, non eveniet nemo natus dignissimos harum odit hic. At, perspiciatis alias temporibus dignissimos id fugiat vel similique ipsam veritatis quibusdam natus quis ad architecto cupiditate assumenda animi debitis explicabo a tenetur tempora voluptate aliquid pariatur minus? Molestiae fugiat minus obcaecati labore? Eligendi nemo iste repellat expedita consectetur, sint laboriosam assumenda ipsa debitis impedit libero excepturi. Nemo atque consequuntur omnis quisquam ratione illum explicabo repudiandae quibusdam facere modi nam error voluptates cupiditate blanditiis minima dolore reprehenderit assumenda dolorem quam, vel a numquam neque. Nobis quam excepturi ratione architecto fugiat consequatur ex est, repudiandae nemo qui tenetur explicabo voluptatem magni ullam suscipit nisi deleniti fugit laudantium eligendi vitae itaque ut, quis aperiam totam. Praesentium doloremque dolorem sint excepturi voluptatum ut sed totam cumque tenetur reprehenderit consequatur rerum in illo, recusandae ratione at ad ea voluptate autem quis corrupti inventore iste impedit. Ipsum labore nam repellat doloribus voluptates atque voluptas enim sit in voluptatem ea, accusamus repudiandae quae illum omnis reiciendis eius! Voluptas eaque corporis minus optio distinctio tempora ipsum earum, et aspernatur quaerat numquam magni, officiis dolor consequatur tenetur necessitatibus itaque a esse nisi, sit eius eveniet amet! Assumenda tempora ducimus facere sed, voluptate et alias vel fugiat! Dolor quo repellat vitae? Facilis nisi laudantium ullam non voluptatem fugit hic, amet vero provident libero, harum dolore excepturi odio doloribus sunt magnam, molestias voluptate! Laudantium a natus minima corrupti ad illum eius. Perferendis commodi earum nobis consectetur reprehenderit fugiat molestiae accusamus architecto delectus alias? Qui, alias accusantium sint quae cumque quia quas molestiae a molestias fugiat sapiente aliquam ut eligendi omnis rerum nisi temporibus assumenda error ea, ipsum exercitationem consequatur dicta id. Fuga, perferendis omnis non tempora accusamus ipsum. Similique nobis soluta vel quam quisquam illum officiis, eum sit pariatur veniam earum voluptatibus! Impedit libero tempore neque. Voluptate exercitationem porro pariatur est, perferendis numquam vitae dolorum tenetur nisi. Voluptatibus atque doloribus illum quaerat nemo sed quae hic adipisci voluptate dolor beatae molestiae temporibus nesciunt, quas quos corrupti quo aut deserunt ea illo perspiciatis culpa, fugit fugiat? Atque, quibusdam quo rerum recusandae voluptates doloremque in alias ea similique, dolorem officia perferendis nobis, nam accusamus. Nobis.
+            <Hero />
+            
+            <div className="home__content">
+                <Title title='news' Icon={Announcement} />
+
+                <CardRow />
+            </div>
+
+            
         </div>
     )
 }

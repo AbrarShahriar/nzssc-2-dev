@@ -11,4 +11,5 @@ body {
 
 .app {
     display: flex;
+    padding: 10px;
 }

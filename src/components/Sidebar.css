@@ -2,18 +2,18 @@
     /* outline: 2px solid red; */
     min-width: 270px;
     max-width: 300px;
-    height: 100vh;
+    height: calc(100vh - 20px);
     border: 1px solid rgba(185, 185, 185, 0.75);
-    /* border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px; */
+    border-radius: 20px;
     background-color: rgb(245, 245, 245);
+    box-shadow: 2px 2px 7px -5px rgba(0, 0, 0, 0.75);
 
     display: flex;
     flex-direction: column;
     padding: 0 10px;
 
     position: sticky;
-    top: 0;
+    top: 10px;
     left: 0;
 }
 
@@ -27,15 +27,71 @@
     margin-top: 10px;
 }
 
-.sidebar__header .sidebar__banner {
+.sidebar__banner {
     padding: 10px;
     background-color: lightgray;
     border-radius: 10px;
 }
 
-.sidebar__header .sidebar__banner img {
+.sidebar__banner img {
     width: 100%;
 }
+
+.loggedIn {
+    display: flex;
+    align-items: center;
+    background-color: lightskyblue;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.user__info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    line-height: 1em;
+}
+
+.user__info > span:first-child {
+    font-weight: 700;
+}
+
+.user__info > span:last-child {
+    font-size: .9em;
+    opacity: 0.8;
+}
+
+.loggedIn .logout__btn {
+    margin-left: auto;
+}
+
+.not__loggedIn {
+    /* outline: 2px solid red; */
+    display: flex;
+}
+
+.not__loggedIn a {
+    padding: 10px 20px;
+    background-color: lightskyblue;
+    text-decoration: none;
+    color: rgb(41, 41, 41);
+    font-weight: 700;
+    border-radius: 20px;
+    transition: all 100ms;
+}
+
+.not__loggedIn a:first-child {
+    margin-right: auto;
+}
+
+.not__loggedIn a:hover {
+    background-color: rgb(41, 41, 41);
+    color: lightskyblue;
+}
+
+/* .logout__btn {
+    margin-left: 100%;
+} */
 
 /* BODY */
 .sidebar__body {
@@ -59,7 +115,7 @@
     border-radius: 20px;
     background-color: white;
     transition: all 100ms ease;
-    border: 1px solid rgb(171, 184, 201);
+    border: 1px solid rgb(177, 204, 240);
     font-weight: 700;
 }
 
@@ -97,18 +153,7 @@
     margin-left: 5px;
 }
 
-.sidebar__footer__option {
-    display: flex;
-    align-items: center;
-    padding-left: 7px;
-    margin: 3px 0;
-    background-color: rgb(236, 235, 235);
-    border-radius: 20px;
-}
 
-.sidebar__footer__option span {
-    margin-left: 5px;
-}
 
 .sidebar__footer__messenger {
     background-color: rgb(202, 215, 231);
@@ -148,4 +193,16 @@
 
 .--active__option {
     background-color: lightskyblue;
+}
+
+
+.slideLeft {
+    animation: slideLeft 1s ease 1 forwards;
+    transform: translateX(-550px);
+}
+
+@keyframes slideLeft {
+    100% {
+        transform: translateX(0);
+    }
 }

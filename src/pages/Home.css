@@ -1,6 +1,27 @@
 .home {
-    padding-top: 20px;
-    outline: 2px solid red;
-    margin-left: 50px;
+    /* padding-top: 20px; */
+    /* outline: 2px solid red; */
+    border-radius: 20px;
+    margin-left: 20px;
     width: 100%;
+    background-color: rgb(245, 245, 245);
+    box-shadow: 2px 2px 7px -5px rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(185, 185, 185, 0.75);
+    
+    height: calc(100vh - 20px);
+    overflow-y: scroll;
+}
+
+.home::-webkit-scrollbar {
+    display: none;
+}
+
+.home {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.home__content {
+    /* outline: 2px solid red; */
+    padding: 0 30px;
 }

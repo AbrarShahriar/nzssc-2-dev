@@ -1,0 +1,12 @@
+.cardrow {
+    width: 100%;
+    /* outline: 2px solid red; */
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+
+    margin: 30px 0; 
+}

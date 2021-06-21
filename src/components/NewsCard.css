@@ -1,0 +1,92 @@
+.newscard {
+    /* outline: 2px solid red; */
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+
+    max-width: 250px;
+    min-width: 200px;
+
+    min-height: 300px;
+    max-width: 300px;
+    margin-right: 20px;
+    /* border: 1px solid #0F1245; */
+
+    background-color: white;
+    box-shadow: 0px 0px 7px -4px rgba(0, 0, 0, 0.75);
+}
+
+.newscard > * {
+    /* outline: 2px solid blue; */
+}
+
+.newscard__header img {
+    max-width: 100%;
+    min-height: 100px;
+    object-fit: contain;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    /* outline: 2px solid green; */
+    margin-bottom: 10px;
+
+}
+
+.newscard__body {
+    padding: 20px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.newscard__body h2 {
+    font-size: 1.4em;
+}
+
+.newscard__body span {
+    opacity: .7;
+    font-size: .9em;
+}
+
+.newscard__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 0px 10px; 
+    /* outline: 2px solid red; */
+    margin-left: 10px;
+    margin-top: auto;
+}
+
+.newscard__footer span {
+    margin-left: 3px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+}
+
+.likes > *:not(span) {
+    cursor: pointer;
+}
+
+.newscard__footer button {
+    border: 1px solid #0F1245;
+    padding: 10px 20px;
+    background-color: #0F1245;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 100ms;
+    font-weight: 700;
+}
+
+.newscard__footer button:hover {
+    background-color: white;
+    color: #0F1245;
+}
