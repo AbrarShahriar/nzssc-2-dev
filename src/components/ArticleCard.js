@@ -10,12 +10,21 @@ function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorIm
             <div className='articlecard'>
 
                 <div className="articlecard__header">
+                    {img && <img src={img} />}
+                </div>
+
+                <div className="articlecard__body">
+                    <h2>{title}</h2>
                     <div className="author__info">
                         {authorImg 
                         ? 
-                            <Avatar src={authorImg} />
+                            <div className="avatar__img">
+                                <img src={authorImg} alt=""/>
+                            </div>
                         :
-                            <Avatar>{authorName[0]}</Avatar>
+                            <div className="avatar__text">
+                                <span>{authorName[0]}</span>
+                            </div>
                         }
                         <span>{authorName}</span>
 
@@ -23,11 +32,6 @@ function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorIm
                             <MoreVert />
                         </div>
                     </div>
-                    {img && <img src={img} />}
-                </div>
-
-                <div className="articlecard__body">
-                    <h2>{title}</h2>
                     <span>{timestamp}</span>
                 </div>
 

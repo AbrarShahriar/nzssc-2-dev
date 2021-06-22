@@ -25,13 +25,10 @@
 }
 
 .author__info {
-    padding: 10px;
     display: flex;
     align-items: center;
-    background-color: #0F1245;
-    color: white;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    margin: 10px 0;
+    margin-left: -5px;
 }
 
 .author__info .article__action {
@@ -42,7 +39,24 @@
 }
 
 .author__info span {
-    margin-left: 10px;
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.avatar__text {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.avatar__text span {
+    /* outline: 2px solid blue; */
+    margin: 0 auto;
+    font-size: .9em;
 }
 
 .bookcard__header img {
@@ -51,6 +65,8 @@
     object-fit: contain;
     /* outline: 2px solid green; */
     margin-bottom: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 
 }
 

@@ -10,6 +10,7 @@
     transition: all 100ms ease;
     border: 1px solid rgb(177, 204, 240);
     font-weight: 700;
+    cursor: pointer;
 }
 
 .link {
@@ -17,11 +18,14 @@
     margin-left: 5px;
     text-decoration: none;
     color: #000;
+    transition: all 100ms ease;
 }
 
 .sidebar__option:hover {
     background-color: rgb(201, 232, 252);
-    /* color: rgb(38, 168, 255); */
-    transform: scale(1.05) translateY(-5px);
+}
+
+.sidebar__option:hover .link {
+    color: rgb(38, 168, 255);
 }
 

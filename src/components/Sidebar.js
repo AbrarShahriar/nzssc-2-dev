@@ -1,12 +1,14 @@
-import { Avatar, Divider, IconButton } from '@material-ui/core'
+import { Avatar, Divider, IconButton, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import { AddBox, Announcement, Email, ExitToApp, Facebook, Group, Home, LibraryBooksOutlined, MenuBook, Message } from '@material-ui/icons'
+import { Add, AddBox, Announcement, Email, ExitToApp, Facebook, Group, Home, LibraryBooksOutlined, MenuBook, Message, SecurityRounded, VpnKeySharp } from '@material-ui/icons'
 import banner from '../images/banner.png'
 import SidebarOption from './SidebarOption'
 
 import { useStateValue } from "../StateProvider";
+
+import loginBg from '../images/login-full.png'
 
 const routes = [
     {
@@ -39,6 +41,24 @@ const routes = [
 function Sidebar() {
 
     const [{ user }, dispatch] = useStateValue()
+
+    const [loginModalState, setloginModalState] = useState(false)
+
+    const handleLoginModalState = () => {
+        setloginModalState(false)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        dispatch({
+            type: 'SET_USER',
+            user: 'Abrar'
+        })
+
+        handleLoginModalState()
+    }
     
     return (
         <div className='sidebar '>
@@ -63,10 +83,7 @@ function Sidebar() {
                         </div>
                     :
                         <div className="not__loggedIn">
-                            <Link onClick={() => dispatch({
-                                type: 'SET_USER',
-                                user: 'Abrar'
-                            })}>Join Us</Link>
+                            <Link onClick={() => setloginModalState(true)}>Join Us</Link>
                         </div>
                     }
 
@@ -118,6 +135,40 @@ function Sidebar() {
                     </div>
                 </div>
             </div>
+
+
+            <Modal 
+                open={loginModalState}
+                onClose={handleLoginModalState}
+            >
+                <div className="login__modal">
+                    <form>
+
+                        <div className="main">
+                            <h1>Log in</h1>
+
+                            <div className="form__inputs">
+                                <div className="form__input">
+                                    <Email />
+                                    <input type="email" name="email" placeholder='Email' />
+                                </div>
+                                <div className="form__input">
+                                    <VpnKeySharp />
+                                    <input type="password" name="password" placeholder='Password' />
+                                </div>
+
+                                <button onClick={handleSubmit}>Log in</button>
+                            </div>
+                            
+                        </div>
+
+                        <img src={loginBg} alt=""/>
+                        <IconButton onClick={handleLoginModalState} className='cross'>
+                            <Add  />
+                        </IconButton>
+                    </form>
+                </div>
+            </Modal>
 
         </div>
     )

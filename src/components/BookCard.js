@@ -10,12 +10,21 @@ function BookCard({ title, img, likes, timestamp, delay, authorName, authorImg, 
             <div className='bookcard'>
 
                 <div className="bookcard__header">
+                    {img && <img src={img} />}
+                </div>
+
+                <div className="bookcard__body">
+                    <h2>{title}</h2>
                     <div className="author__info">
                         {authorImg 
                         ? 
-                            <Avatar src={authorImg} />
+                            <div className="avatar__img">
+                                <img src={authorImg} alt=""/>
+                            </div>
                         :
-                            <Avatar>{authorName[0]}</Avatar>
+                            <div className="avatar__text">
+                                <span>{authorName[0]}</span>
+                            </div>
                         }
                         <span>{authorName}</span>
 
@@ -23,12 +32,6 @@ function BookCard({ title, img, likes, timestamp, delay, authorName, authorImg, 
                             <MoreVert />
                         </div>
                     </div>
-                    {img && <img src={img} />}
-                </div>
-
-                <div className="bookcard__body">
-                    <h2>{title}</h2>
-                    <p>Writer: <span>{writer}</span></p>
                     <span>{timestamp}</span>
                 </div>
 
