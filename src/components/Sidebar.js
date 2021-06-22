@@ -1,31 +1,12 @@
 import { Avatar, Divider, IconButton } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import { Announcement, Email, ExitToApp, Facebook, Group, Home, LibraryBooksOutlined, MenuBook, Message } from '@material-ui/icons'
+import { AddBox, Announcement, Email, ExitToApp, Facebook, Group, Home, LibraryBooksOutlined, MenuBook, Message } from '@material-ui/icons'
 import banner from '../images/banner.png'
 import SidebarOption from './SidebarOption'
 
-{/* <div className="sidebar__option --active__option">
-                        <Home />
-                        <Link to='/'>Home</Link>
-                    </div>
-                    <div className="sidebar__option">
-                        <Announcement />
-                        <Link to='news&notices'>News & Notices</Link>
-                    </div>
-                    <div className="sidebar__option">
-                        <LibraryBooksOutlined />
-                        <Link to='/articles'>Articles</Link>
-                    </div>
-                    <div className="sidebar__option">
-                        <MenuBook />
-                        <Link to='/bookreview'>Book Review</Link>
-                    </div>
-                    <div className="sidebar__option">
-                        <Group />
-                        <Link to='/about'>About Us</Link>
-                    </div> */}
+import { useStateValue } from "../StateProvider";
 
 const routes = [
     {
@@ -56,14 +37,16 @@ const routes = [
 ]
 
 function Sidebar() {
-    const isLoggedIn = true
+
+    const [{ user }, dispatch] = useStateValue()
+    
     return (
         <div className='sidebar '>
 
             <div className="sidebar__header">
                 <div className="sidebar__header__container">
                     
-                    {isLoggedIn
+                    {user
                     ?
                         <div className="loggedIn">
                             <Avatar />
@@ -72,13 +55,18 @@ function Sidebar() {
                                 {/* <span>Role</span> */}
                             </div>  
                             <IconButton className='logout__btn'>
-                                <ExitToApp />
+                                <ExitToApp onClick={() => dispatch({
+                                    type: 'SET_USER',
+                                    user: null
+                                })} />
                             </IconButton>
                         </div>
                     :
                         <div className="not__loggedIn">
-                            <Link to='/register'>Register</Link>
-                            <Link to='/login'>Login</Link>
+                            <Link onClick={() => dispatch({
+                                type: 'SET_USER',
+                                user: 'Abrar'
+                            })}>Join Us</Link>
                         </div>
                     }
 
@@ -97,6 +85,15 @@ function Sidebar() {
                             Icon={route.Icon}
                         />
                     ))}
+
+                    {user && 
+                        <SidebarOption  
+                            delay={0}
+                            name='Post Content' 
+                            to='/new' 
+                            Icon={AddBox}
+                        />
+                    }
                 </div>
             </div>
 

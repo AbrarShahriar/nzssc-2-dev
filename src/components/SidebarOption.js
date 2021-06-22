@@ -8,7 +8,7 @@ function SidebarOption({ to, name, Icon, delay }) {
         <Fade left delay={delay*100}>
            <div className="sidebar__option">
                 <Icon />
-                <Link to={to}>{name}</Link>
+                <Link className='link' to={to}>{name}</Link>
             </div>
         </Fade>
     )

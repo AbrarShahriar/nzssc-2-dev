@@ -1,5 +1,7 @@
-.newscard {
+.bookcard {
     /* outline: 2px solid red; */
+    position: relative;
+    z-index: 20;
 
     display: flex;
     flex-direction: column;
@@ -18,38 +20,70 @@
     box-shadow: 0px 0px 7px -6px rgba(0, 0, 0, 0.75);
 }
 
-.newscard > * {
+.bookcard > * {
     /* outline: 2px solid blue; */
 }
 
-.newscard__header img {
+.author__info {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #0F1245;
+    color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.author__info .article__action {
+    margin-left: auto;
+    cursor: pointer;
+    color: white;
+    /* outline: 2px solid red; */
+}
+
+.author__info span {
+    margin-left: 10px;
+}
+
+.bookcard__header img {
     max-width: 100%;
     min-height: 100px;
     object-fit: contain;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
     /* outline: 2px solid green; */
     margin-bottom: 10px;
 
 }
 
-.newscard__body {
+.bookcard__body {
     padding: 20px;
     padding-top: 0;
     display: flex;
     flex-direction: column;
 }
 
-.newscard__body h2 {
+.bookcard__body h2 {
     font-size: 1.4em;
 }
 
-.newscard__body span {
+.bookcard__body > p {
+    font-weight: 700;
+    opacity: 0.7;
+    font-size: .9em;
+    margin: 5px 0;
+}
+
+.bookcard__body > p > span {
+    font-weight: 600;
+    opacity: 0.8;
+    font-size: .9em;
+}
+
+.bookcard__body > span {
     opacity: .7;
     font-size: .9em;
 }
 
-.newscard__footer {
+.bookcard__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,7 +94,7 @@
     margin-top: auto;
 }
 
-.newscard__footer span {
+.bookcard__footer span {
     margin-left: 3px;
     font-size: 0.9em;
     opacity: 0.8;
@@ -75,7 +109,7 @@
     cursor: pointer;
 }
 
-.newscard__footer button {
+.bookcard__footer button {
     border: 1px solid #0F1245;
     padding: 10px 20px;
     background-color: #0F1245;
@@ -86,7 +120,12 @@
     font-weight: 700;
 }
 
-.newscard__footer button:hover {
+.bookcard__footer button:hover {
     background-color: white;
     color: #0F1245;
+}
+
+/* UTILS */
+.icon__white {
+    /* color: white; */
 }

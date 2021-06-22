@@ -22,7 +22,7 @@ function NewsCard({ title, img, likes, timestamp, delay }) {
                         <FavoriteBorder />
                         <span>{likes}</span>
                     </div>
-                    <button>Read More</button>
+                    <button>Read</button>
                 </div>
 
             </div>

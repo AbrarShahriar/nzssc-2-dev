@@ -10,7 +10,6 @@
 
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
 
     position: sticky;
     top: 10px;
@@ -23,18 +22,8 @@
 
 /* HEADER */
 .sidebar__header {
-    padding: 10px;
+    padding: 5px 10px;
     margin-top: 10px;
-}
-
-.sidebar__banner {
-    padding: 10px;
-    background-color: lightgray;
-    border-radius: 10px;
-}
-
-.sidebar__banner img {
-    width: 100%;
 }
 
 .loggedIn {
@@ -68,10 +57,17 @@
 .not__loggedIn {
     /* outline: 2px solid red; */
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .not__loggedIn a {
-    padding: 10px 20px;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2em;
     background-color: lightskyblue;
     text-decoration: none;
     color: rgb(41, 41, 41);
@@ -80,23 +76,15 @@
     transition: all 100ms;
 }
 
-.not__loggedIn a:first-child {
-    margin-right: auto;
-}
-
 .not__loggedIn a:hover {
     background-color: rgb(41, 41, 41);
     color: lightskyblue;
 }
 
-/* .logout__btn {
-    margin-left: 100%;
-} */
-
 /* BODY */
 .sidebar__body {
     /* outline: 2px solid red; */
-    padding: 0px 10px;
+    margin-left: 10px;
 }
 
 .sidebar__options {
@@ -105,36 +93,11 @@
     justify-content: center;
 }
 
-.sidebar__option {
-    /* outline: 2px solid blue; */
-    display: flex; 
-    align-items: center;
-    width: max-content;
-    padding: 5px 10px;
-    margin: 20px 0;
-    border-radius: 20px;
-    background-color: white;
-    transition: all 100ms ease;
-    border: 1px solid rgb(177, 204, 240);
-    font-weight: 700;
-}
-
-.sidebar__option:hover {
-    background-color: rgb(201, 232, 252);
-}
-
-.sidebar__option a {
-    margin-left: 5px;
-    text-decoration: none;
-    color: #000;
-}
-
 /* FOOTER */
 .sidebar__footer {
     /* outline: 2px solid red; */
+    margin: 10px;
     margin-top: auto;
-    margin-bottom: 20px;
-    padding: 10px;
 }
 
 .sidebar__footer__container {
@@ -153,7 +116,18 @@
     margin-left: 5px;
 }
 
+.sidebar__footer__option {
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+    margin: 3px 0;
+    background-color: rgb(236, 235, 235);
+    border-radius: 20px;
+}
 
+.sidebar__footer__option span {
+    margin-left: 5px;
+}
 
 .sidebar__footer__messenger {
     background-color: rgb(202, 215, 231);
@@ -186,7 +160,7 @@
 
 /* UTIL */
 .sidebar .divider {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 90%;
     margin: 10px auto;
 }
