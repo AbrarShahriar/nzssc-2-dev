@@ -11,6 +11,7 @@ function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorIm
 
                 <div className="articlecard__header">
                     {img && <img src={img} />}
+                    <button className='read__btn'>Read</button>
                 </div>
 
                 <div className="articlecard__body">

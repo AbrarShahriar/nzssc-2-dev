@@ -10,6 +10,7 @@ function NewsCard({ title, img, likes, timestamp, delay }) {
 
                 <div className="newscard__header">
                     {img && <img src={img} />}
+                    <button className='read__btn'>Read</button>
                 </div>
 
                 <div className="newscard__body">

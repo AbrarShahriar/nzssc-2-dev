@@ -1,0 +1,67 @@
+.hero1 {
+    position: relative;
+}
+
+.hero1__bg {
+    width: 100%;
+}
+
+.hero1__banner {
+    display: flex;
+    align-items: center;
+     outline: 2px solid red;
+     justify-content: space-around;
+
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     
+}
+
+.spacebro {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+    /* outline: 2px solid red; */
+}
+
+.logo__withText {
+    /* outline: 2px solid red; */
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    z-index: 7;
+}
+
+.logo__withText img {
+    width: 100px;
+    /* outline: 2px solid red; */
+    /* margin: auto; */
+    margin-right: 10px;
+}
+
+.banner__title {
+    display: flex;
+    flex-direction: column;
+    color: mintcream;
+    /* outline: 2px solid blue; */
+}
+
+.banner__title > * {
+    /* outline: 2px solid green; */
+}
+
+.banner__title h1 {
+    font-size: 3em;
+    width: max-content;
+}
+
+.banner__title h2 {
+    font-size: 2em;
+    width: max-content;
+
+}

@@ -1,3 +1,4 @@
+import { LoginModal } from './LoginModal';
 import { Avatar, Divider, IconButton, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
 import './Sidebar.css'
@@ -8,7 +9,9 @@ import SidebarOption from './SidebarOption'
 
 import { useStateValue } from "../StateProvider";
 
-import loginBg from '../images/login-full.png'
+// import loginBg from '../images/login-bg-svg1.svg'
+import bg from '../images/sidebar-bg1.png'
+import AuthTabs from './AuthTabs';
 
 const routes = [
     {
@@ -44,21 +47,12 @@ function Sidebar() {
 
     const [loginModalState, setloginModalState] = useState(false)
 
+
     const handleLoginModalState = () => {
         setloginModalState(false)
     }
 
-    const handleSubmit = e => {
-        e.preventDefault()
-        e.stopPropagation()
-
-        dispatch({
-            type: 'SET_USER',
-            user: 'Abrar'
-        })
-
-        handleLoginModalState()
-    }
+    
     
     return (
         <div className='sidebar '>
@@ -115,6 +109,7 @@ function Sidebar() {
             </div>
 
             <div className="sidebar__footer">
+                <img className='sidebar__bg' src={bg} alt=""/>
                 <div className="sidebar__footer__container">
                     <h4>Contact Us</h4>
                     <div className="sidebar__footer__options">
@@ -141,33 +136,9 @@ function Sidebar() {
                 open={loginModalState}
                 onClose={handleLoginModalState}
             >
-                <div className="login__modal">
-                    <form>
-
-                        <div className="main">
-                            <h1>Log in</h1>
-
-                            <div className="form__inputs">
-                                <div className="form__input">
-                                    <Email />
-                                    <input type="email" name="email" placeholder='Email' />
-                                </div>
-                                <div className="form__input">
-                                    <VpnKeySharp />
-                                    <input type="password" name="password" placeholder='Password' />
-                                </div>
-
-                                <button onClick={handleSubmit}>Log in</button>
-                            </div>
-                            
-                        </div>
-
-                        <img src={loginBg} alt=""/>
-                        <IconButton onClick={handleLoginModalState} className='cross'>
-                            <Add  />
-                        </IconButton>
-                    </form>
-                </div>
+                <AuthTabs 
+                    handleLoginModalState={handleLoginModalState}
+                />
             </Modal>
 
         </div>

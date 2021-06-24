@@ -11,6 +11,7 @@ function BookCard({ title, img, likes, timestamp, delay, authorName, authorImg, 
 
                 <div className="bookcard__header">
                     {img && <img src={img} />}
+                    <button className='read__btn'>Read</button>
                 </div>
 
                 <div className="bookcard__body">

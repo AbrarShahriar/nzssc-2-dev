@@ -1,7 +1,7 @@
 .home {
     /* padding-top: 20px; */
     /* outline: 2px solid red; */
-    border-radius: 20px;
+    border-radius: 30px;
     margin-left: 20px;
     width: 100%;
     background-color: rgb(245, 245, 245);
@@ -10,6 +10,8 @@
     
     height: calc(100vh - 20px);
     overflow-y: scroll;
+
+    position: relative;
 }
 
 .home::-webkit-scrollbar {
@@ -24,4 +26,142 @@
 .home__content {
     /* outline: 2px solid red; */
     padding: 0 30px;
+    position: relative;
+}
+
+.home__content__pos {
+    position: absolute;
+    top: 400px;
+}
+
+
+
+
+
+
+
+
+
+.icon {
+    width: 64px;
+    height: 64px;
+    fill: #000;
+
+    position: absolute;
+    z-index: 1;
+
+    opacity: 0;
+
+    top: 0;
+    left: 0;
+
+    animation: 
+        fadeIn      500ms  ease    500ms  forwards
+        ;
+}
+@media (max-width: 600px) {
+    .icon  {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.icon-1 {
+    top: 80%;
+    left: 60%;
+    /* animation-duration: 4s;
+    animation-delay: 1s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      2s ease-in 1s  infinite;
+}
+.icon-2 {
+    top: 100%;
+    left: 30%;
+    /* animation-duration: 5s;
+    animation-delay: 2s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      5s ease-in 2s  infinite;
+}
+.icon-3 {
+    top: 100%;
+    left: 80%;
+    /* animation-duration: 3s;
+    animation-delay: 1s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      3s ease-in 1s  infinite;
+}
+.icon-4 {
+    top: 50%;
+    left: 10%;
+    /* animation-duration: 7s;
+    animation-delay: 3s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      7s ease-in 3s  infinite;
+}
+.icon-5 {
+    top: 40%;
+    left: 90%;
+    /* animation-duration: 2s;
+    animation-delay: 500ms; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      2s ease-in 1.5s  infinite;
+}
+.icon-6 {
+    top: 30%;
+    left: 20%;
+    transform: rotate(-25deg);
+    /* animation-duration: 2s;
+    animation-delay: 4s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp6      2s ease-in 2s  infinite;
+}
+.icon-7 {
+    top: 100%;
+    left: 40%;
+    /* animation-duration: 7s;
+    animation-delay: 3s; */
+    animation: 
+    /* rotateIcon  5s linear  1s  infinite, */
+    moveUp      7s ease-in 1s  infinite;
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(-1300px) rotate(-25deg);
+    }
+}
+@keyframes moveUp6 {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: .5;
+    }
+    100% {
+        transform: translateY(-1300px);
+    }
+}
+
+@keyframes rotateIcon {
+    100% {
+        transform: rotate(360deg);
+    }
 }
