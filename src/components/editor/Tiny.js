@@ -59,13 +59,10 @@ export default function Tiny() {
 
   return (
     <>
-
-    {/* {loading && <CircularProgress />} */}
       <Editor
         // apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
-        tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce.min.js'}
         onInit={handleReady}
-        initialValue="<p>This is the initial content of the editor.</p>"
+        initialValue=""
         init={{
           height: 500,
           menubar: false,
@@ -77,8 +74,6 @@ export default function Tiny() {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
-      {!loading && <button onClick={preview}>Preview</button>}
-      {!loading && <div dangerouslySetInnerHTML={{__html: html}}></div>}
     </>
   );
 }
