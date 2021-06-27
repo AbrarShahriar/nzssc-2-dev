@@ -53,7 +53,7 @@ export function SignupModal({
                             <input type="password" name="confirm-password" placeholder='Confirm Password' />
                         </div>
 
-                        <button onClick={handleSubmit}>Log in</button>
+                        <button onClick={handleSubmit}>Sign Up</button>
                     </div>
                         
                     </div>}

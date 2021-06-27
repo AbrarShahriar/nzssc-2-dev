@@ -2,6 +2,31 @@ import React, { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { CircularProgress } from "@material-ui/core";
 
+import tinymce from 'tinymce/tinymce'
+import 'tinymce/themes/silver'
+import 'tinymce/icons/default'
+import 'tinymce/skins/ui/oxide/skin.min.css'
+
+import 'tinymce/plugins/advlist'
+import 'tinymce/plugins/autolink'
+import 'tinymce/plugins/link'
+import 'tinymce/plugins/image'
+import 'tinymce/plugins/lists'
+import 'tinymce/plugins/charmap'
+import 'tinymce/plugins/hr'
+import 'tinymce/plugins/anchor'
+import 'tinymce/plugins/spellchecker'
+import 'tinymce/plugins/searchreplace'
+import 'tinymce/plugins/wordcount'
+import 'tinymce/plugins/code'
+import 'tinymce/plugins/fullscreen'
+import 'tinymce/plugins/insertdatetime'
+import 'tinymce/plugins/media'
+import 'tinymce/plugins/nonbreaking'
+import 'tinymce/plugins/table'
+import 'tinymce/plugins/template'
+import 'tinymce/plugins/help'
+
 const allPlugins = [
   'advlist autolink lists link image charmap print preview anchor',
   'searchreplace visualblocks code fullscreen',
@@ -35,9 +60,10 @@ export default function Tiny() {
   return (
     <>
 
-    {loading && <CircularProgress />}
+    {/* {loading && <CircularProgress />} */}
       <Editor
-        apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
+        // apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
+        tinymceScriptSrc={process.env.PUBLIC_URL + '/tinymce.min.js'}
         onInit={handleReady}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{

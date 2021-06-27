@@ -1,0 +1,25 @@
+.members {
+    /* outline: 2px solid red; */
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgba(255, 255, 255, .25);
+
+    border-radius: 20px;
+    padding-top: 20px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    margin-bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+

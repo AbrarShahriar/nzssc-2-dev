@@ -3,8 +3,7 @@ import { Avatar, Divider, IconButton, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import { Add, AddBox, Announcement, Email, ExitToApp, Facebook, Group, Home, LibraryBooksOutlined, MenuBook, Message, SecurityRounded, VpnKeySharp } from '@material-ui/icons'
-import banner from '../images/banner.png'
+import { AddBox, AnnouncementOutlined, Email, ExitToApp, Facebook, LibraryBooksOutlined, Message, HomeOutlined, GroupOutlined, MenuBookOutlined } from '@material-ui/icons'
 import SidebarOption from './SidebarOption'
 
 import { useStateValue } from "../StateProvider";
@@ -17,12 +16,12 @@ const routes = [
     {
         name: 'Home',
         to: '/',
-        Icon: Home
+        Icon: HomeOutlined
     },
     {
         name: 'News & Notices',
         to: '/news&notices',
-        Icon: Announcement
+        Icon: AnnouncementOutlined
     },
     {
         name: 'Articles',
@@ -32,12 +31,12 @@ const routes = [
     {
         name: 'Book Review',
         to: '/bookreview',
-        Icon: MenuBook
+        Icon: MenuBookOutlined
     },
     {
         name: 'About Us',
         to: '/about',
-        Icon: Group
+        Icon: GroupOutlined
     }
 ]
 

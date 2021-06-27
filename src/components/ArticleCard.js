@@ -2,9 +2,10 @@ import { Favorite, FavoriteBorder, MoreVert } from '@material-ui/icons'
 import React from 'react'
 import './ArticleCard.css'
 import Fade from "react-reveal/Fade";
-import { Avatar, IconButton, MenuList } from '@material-ui/core';
+import { IconButton, MenuList } from '@material-ui/core';
+import Avatar from './Avatar'
 
-function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorImg }) {
+function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorImg, tag }) {
     return (
         <Fade bottom delay={delay*100}>
             <div className='articlecard'>
@@ -15,18 +16,13 @@ function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorIm
                 </div>
 
                 <div className="articlecard__body">
+                    <span className='tag'>{tag}</span>
                     <h2>{title}</h2>
                     <div className="author__info">
-                        {authorImg 
-                        ? 
-                            <div className="avatar__img">
-                                <img src={authorImg} alt=""/>
-                            </div>
-                        :
-                            <div className="avatar__text">
-                                <span>{authorName[0]}</span>
-                            </div>
-                        }
+                        <Avatar 
+                            authorImg={authorImg}
+                            authorName={authorName}
+                        />
                         <span>{authorName}</span>
 
                         <div className='article__action'>

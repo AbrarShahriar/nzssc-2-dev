@@ -21,6 +21,9 @@
 .home {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    position: relative;
+
+    /* outline: 2px solid red; */
 }
 
 .home__content {
@@ -32,13 +35,21 @@
 .home__content__pos {
     position: absolute;
     top: 400px;
+    width: 100%;
 }
 
 
 
 
 
+.hero1__bottom {
+    width: 100%;
+    transform: rotate(180deg);
 
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+}
 
 
 

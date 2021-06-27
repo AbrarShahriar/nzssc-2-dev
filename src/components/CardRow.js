@@ -7,13 +7,15 @@ import ss from "../images/banner.png";
 import ss1 from "../images/ss.jpg";
 import BookCard from './BookCard';
 
+const col = 3
+
 function CardRow({ type }) {
 
 
     if(type === 'news') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(4)).map((card, index) => (
+                {Array.from(new Array(col)).map((card, index) => (
                     <NewsCard 
                         title='Shamim e ki bollo!!'
                         img={ss1}
@@ -27,8 +29,9 @@ function CardRow({ type }) {
     } else if (type === 'article') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(4)).map((card, index) => (
+                {Array.from(new Array(col)).map((card, index) => (
                     <ArticleCard 
+                        tag='physics'
                         title='Kheladhula sikhun Shamim theke 10ti upaye'
                         authorName='AbrarShahriar'
                         img={ss1}
@@ -42,7 +45,7 @@ function CardRow({ type }) {
     } else if (type === 'book') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(4)).map((card, index) => (
+                {Array.from(new Array(col)).map((card, index) => (
                     <BookCard
                         authorName='AbrarShahriar'
                         title='Belly Dance 101'
@@ -75,4 +78,4 @@ function CardRow({ type }) {
     )
 }
 
-export default CardRow
+export default React.memo(CardRow)
