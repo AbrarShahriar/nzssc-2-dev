@@ -12,7 +12,8 @@ export default function Result({
   authorName,
   timestamp,
   title,
-  desc
+  desc,
+  likes
 }) {
 
     return (
@@ -24,7 +25,7 @@ export default function Result({
 
             <div className="result__right">
                 <h3>
-                    <Link to={`/${topic}/${id}`}>{title}</Link>
+                    <Link target='_blank' to={`/${topic}/${id}`}>{title}</Link>
                 </h3>
 
                 <p>{desc}</p>
@@ -36,7 +37,10 @@ export default function Result({
 
                 <span className='timestamp'>{timestamp}</span>
 
-                <FavoriteBorderOutlined className='like' />
+                <div className="like">
+                    <span>{likes ? likes : 547}</span>
+                    <FavoriteBorderOutlined  />
+                </div>
             </div>
 
         </div>

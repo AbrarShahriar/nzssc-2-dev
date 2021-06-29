@@ -14,3 +14,13 @@
     position: relative;
     z-index: 20;
 }
+
+@media (max-width: 600px) {
+    .cardrow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 30px 0; 
+    }
+}

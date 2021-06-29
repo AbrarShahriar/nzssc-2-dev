@@ -10,9 +10,10 @@
     position: relative;
     z-index: 5;
 }
-
-.title > * {
-    /* outline: 2px solid red; */
+@media (max-width: 600px) {
+    .title {
+        margin: 0 auto;
+    }
 }
 
 .title span {

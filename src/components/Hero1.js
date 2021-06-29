@@ -7,6 +7,7 @@ import logo from '../images/logo.png'
 function Hero1() {
     return (
         <div className='hero1'>
+            <div className="hero1__bg__bgc"></div>
             <img className='hero1__bg' src={bg} alt=""/>
             <div className="logo__withText">
                 <img src={logo} alt=""/>

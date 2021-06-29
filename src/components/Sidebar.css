@@ -16,8 +16,10 @@
     left: 0;
 }
 
-.sidebar > * {
-    /* outline: 2px solid blue; */
+@media (max-width: 600px) {
+    .sidebar {
+        display: none;
+    }
 }
 
 /* HEADER */

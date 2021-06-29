@@ -2,6 +2,7 @@ import { Member } from './Member';
 import React from 'react'
 import './Members.css' 
 import ss from '../images/ss.jpg'
+import { useMediaQuery } from '@material-ui/core'
 
 const members = [
     {
@@ -69,40 +70,49 @@ const oneRow = () => {
 }
 
 function Members() {
+
+    const phone = useMediaQuery('(max-width: 600px)')
+
     return (
         <div className='members'>
             
             <div className="col">
 
-                {/* {Array.from(new Array(6)).map((row, i) => {
-                    let count = (2*i)+1
-                    let twoMembers = getNextTwo(count)
-                    return (
-                        <div key={i} className='row'>
-                            {twoMembers.map((member, j) => {
-                                if(j/2 != 0) {
-                                    return <Member ss={ss} direction='right' name={member.name} title={member.title} />
-                                } 
-                                return <Member ss={ss} direction='left' name={member.name} title={member.title} />
-                            })}
-                        </div>
-                    )
-                })} */}
+                {phone
+                ?
+                <>
+                    {members.map((member, i) => (
+                        <Member 
+                            key={i}
+                            ss={ss} 
+                            direction='right' 
+                            name={member.name} 
+                            title={member.title}
+                        />
+                    ))}
+                </>
+                :
+                <>
+                    {Array.from(new Array(4)).map((row, i) => {
+                        let count = (3*i)+2
+                        let threeMembers = getNextThree(count)
+                        return (
+                            <div key={i} className='row'>
+                                {threeMembers.map((member, j) => {
+                                    if(j/3 != 0) {
+                                        return <Member ss={ss} direction='right' name={member.name} title={member.title} />
+                                    } 
+                                    return <Member ss={ss} direction='left' name={member.name} title={member.title} />
+                                })}
+                            </div>
+                        )
+                    })}
+                </>
+                }
 
-                {Array.from(new Array(4)).map((row, i) => {
-                    let count = (3*i)+2
-                    let threeMembers = getNextThree(count)
-                    return (
-                        <div key={i} className='row'>
-                            {threeMembers.map((member, j) => {
-                                if(j/3 != 0) {
-                                    return <Member ss={ss} direction='right' name={member.name} title={member.title} />
-                                } 
-                                return <Member ss={ss} direction='left' name={member.name} title={member.title} />
-                            })}
-                        </div>
-                    )
-                })}
+                
+
+                
                 
             </div>
             <div className="col"></div>

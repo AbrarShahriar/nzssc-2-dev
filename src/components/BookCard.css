@@ -19,6 +19,14 @@
     background-color: white;
     box-shadow: 0px 0px 7px -6px rgba(0, 0, 0, 0.75);
 }
+@media (max-width: 600px) {
+    .bookcard {
+        max-width: 350px;
+        min-width: 300px;
+        margin: 20px auto;
+    }
+    
+}
 
 .bookcard > * {
     /* outline: 2px solid blue; */
@@ -111,6 +119,13 @@
     filter: brightness(.5);
     transform: scale(1.2);
 }
+@media (max-width: 600px) {
+    .bookcard:hover .bookcard__header img {
+        filter: none;
+        transform: none;
+    }
+}
+
 
 .bookcard:hover .bookcard__header .read__btn {
     opacity: 1;

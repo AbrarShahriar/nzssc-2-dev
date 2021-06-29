@@ -3,7 +3,7 @@ import { Avatar, Divider, IconButton, Modal } from '@material-ui/core'
 import React, { useState } from 'react'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import { AddBox, AnnouncementOutlined, Email, ExitToApp, Facebook, LibraryBooksOutlined, Message, HomeOutlined, GroupOutlined, MenuBookOutlined } from '@material-ui/icons'
+import { AddBox, AnnouncementOutlined, Email, ExitToApp, Facebook, LibraryBooksOutlined, Message, HomeOutlined, GroupOutlined, MenuBookOutlined, DashboardOutlined } from '@material-ui/icons'
 import SidebarOption from './SidebarOption'
 
 import { useStateValue } from "../StateProvider";
@@ -97,12 +97,20 @@ function Sidebar() {
                     ))}
 
                     {user && 
+                    <>
                         <SidebarOption  
                             delay={0}
                             name='Post Content' 
                             to='/new' 
                             Icon={AddBox}
                         />
+                        <SidebarOption  
+                            delay={0}
+                            name='Dashboard' 
+                            to='/dashboard' 
+                            Icon={DashboardOutlined}
+                        />
+                    </>
                     }
                 </div>
             </div>

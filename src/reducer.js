@@ -1,5 +1,10 @@
 export const initialState = {
-    user: null
+    user: null,
+    editorState: '',
+    postTitle: '',
+    postTopic: '',
+    postTags: '',
+    postCover: ''
 }
 
 export const reducer = (state = initialState, action) => {
@@ -10,6 +15,12 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.user
+            }
+        
+        case 'SET_EDITOR_STATE':
+            return {
+                ...state,
+                editorState: action.editorState
             }
     
         default:

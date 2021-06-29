@@ -53,7 +53,7 @@ function PostContent() {
 
                     <div className="postContent__input editor">
                         
-                        <span onClick={() => setCoverPhotoModal(true)} className='label__file' ><CloudUploadOutlined className='icon__upload' /> Upload/Link cover photo</span>
+                        <span onClick={() => setCoverPhotoModal(true)} className='label__file__post' ><CloudUploadOutlined className='icon__upload' /> Upload/Link cover photo</span>
 
                         <Modal
                             open={coverPhotoModal}
@@ -64,7 +64,7 @@ function PostContent() {
 
                                     <div className="upload-link__header">
                                         <h3>Upload or Link</h3>
-                                        <span onClick={handleCoverPhotoModalClose}><Add /></span>
+                                        <span className='icon__close' onClick={handleCoverPhotoModalClose}><Add /></span>
                                     </div>
 
                                     
@@ -80,7 +80,7 @@ function PostContent() {
 
                                     <div className="upload-link__footer">
                                         <IconButton onClick={handleCoverPhotoModalClose} >
-                                            <Done />
+                                            <Done className='icon__okay'/>
                                         </IconButton>
                                     </div>
                                     
@@ -92,11 +92,6 @@ function PostContent() {
                     <div className="postContent__input">
                         <span>Post Body *</span>
                         <Tiny />
-                    </div>
-
-                    <div className="postContent__actions">
-                        <button className='save-as-draft action-btn'>Save as draft</button>
-                        <button className='publish action-btn'>Publish</button>
                     </div>
 
                 </div>

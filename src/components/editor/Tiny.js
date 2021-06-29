@@ -26,6 +26,7 @@ import 'tinymce/plugins/nonbreaking'
 import 'tinymce/plugins/table'
 import 'tinymce/plugins/template'
 import 'tinymce/plugins/help'
+import { useStateValue } from '../../StateProvider';
 
 const allPlugins = [
   'advlist autolink lists link image charmap print preview anchor',
@@ -40,20 +41,21 @@ const pluginsUsed = [
 ]
 
 export default function Tiny() {
-  const editorRef = useRef(null);
-  const [loading, setLoading] = useState(true)
-  const [html, setHtml] = useState('')
 
-  const preview = () => {
+  const [{ editorState }, dispatch] = useStateValue()
+
+  const editorRef = useRef(null);
+
+  const handleSave = () => {
     if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-      setHtml(editorRef.current.getContent())
+      dispatch({
+        type: 'SET_EDITOR_STATE',
+        editorState: editorRef.current.getContent()
+      })
     }
   };
 
   const handleReady = (evt, editor) => {
-    console.log('editor ready');
-    setLoading(false)
     editorRef.current = editor
   }
 
@@ -62,7 +64,7 @@ export default function Tiny() {
       <Editor
         // apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
         onInit={handleReady}
-        initialValue=""
+        initialValue={editorState}
         init={{
           height: 500,
           menubar: false,
@@ -74,6 +76,11 @@ export default function Tiny() {
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
         }}
       />
+
+      <div className="postContent__actions">
+          <button onClick={handleSave} className='save-as-draft action-btn'>Save as draft</button>
+          <button className='publish action-btn'>Publish</button>
+      </div>
     </>
   );
 }

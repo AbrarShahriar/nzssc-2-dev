@@ -1,6 +1,4 @@
 .postContent {
-    /* padding-top: 20px; */
-    /* outline: 2px solid red; */
     border-radius: 30px;
     margin-left: 20px;
     width: 100%;
@@ -12,6 +10,15 @@
     overflow-y: scroll;
 
     position: relative;
+}
+@media (max-width: 600px) {
+    .postContent {
+        border-radius: 0;
+        margin-left: 0;
+        box-shadow: none;
+        border: none;
+        height: 100vh;
+    }
 }
 
 .postContent::-webkit-scrollbar {
@@ -29,6 +36,12 @@
     flex-direction: column;
     padding: 50px;
 }
+@media (max-width: 600px) {
+    .postContent__content {
+        padding: 20px;
+        padding-top: 50px;
+    }
+}
 
 .postContent__content h1 {
     margin-bottom: 50px;
@@ -41,15 +54,24 @@
     justify-content: space-between;
     margin-bottom: 30px;
 }
+@media (max-width: 600px) {
+    .select-tag {
+        flex-direction: column;
+    }
+}
 
 .select-tag > *:first-child {
     margin-right: 30px;
+}
+@media (max-width: 600px) {
+    .select-tag > *:first-child {
+        margin-right: 0;
+    }
 }
 
 .postContent__inputs {
     display: flex;
     flex-direction: column;
-    /* outline: 2px solid red; */
 }
 
 .postContent__input {
@@ -58,9 +80,6 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
-    padding-left: 10px;
-
-    /* outline: 2px solid red; */
 }
 
 .postContent__input span {
@@ -91,7 +110,7 @@
     z-index: -1;
 }
 
-.label__file {
+.label__file__post {
     display: flex;
     align-items: center;
     width: fit-content;
@@ -103,17 +122,30 @@
     font-weight: 700;
     color: mintcream;
     cursor: pointer;
-    /* border: 2px solid tomato; */
     transition: all 100ms;
 }
+@media (max-width: 600px) {
+    .label__file__post {
+        font-size: 1em;
+        padding: 10px 30px;
+    }
+}
 
-.label__file:hover {
+.label__file__post:hover {
     background-color: white;
     color: tomato;
 }
 
 .icon__upload {
     margin-right: 10px;
+}
+
+.icon__close {
+    color: tomato;
+}
+
+.icon__okay {
+    color: yellowgreen;
 }
 
 .modal__upload-link {
@@ -132,12 +164,17 @@
     height: 50px;
     display: flex;
     align-items: center;
-    margin-bottom: 0px;
 }
 
 .upload-link__header h3 {
     margin-left: 20px;
     font-size: 1.3em;
+}
+@media (max-width: 600px) {
+    .upload-link__header h3 {
+        margin-left: 10px;
+        font-size: 1.2em;
+    }
 }
 
 .upload-link__header span {
@@ -164,6 +201,15 @@
 
     margin: 20px 50px;
 }
+@media (max-width: 600px) {
+    .upload-link__body input[type='text'] {
+        padding: 10px;
+        background-color: white;
+        font-size: 1.2em;
+    
+        margin: 20px;
+    }
+}
 
 .upload-link__body p {
     text-align: center;
@@ -179,7 +225,7 @@
 .upload-link__body p::before, .upload-link__body p::after {
     content: '';
     width: 120px;
-    height: 2px;
+    height: 1px;
     background-color: black;
     opacity: 0.25;
 }
@@ -201,10 +247,18 @@
     height: 50px;
 }
 
-.postContent__actions {
 
+/* IN TINYJS FILE */
+
+.postContent__actions {
+    margin-top: 50px;
     display: flex;
     justify-content: flex-end;
+}
+@media (max-width: 600px) {
+    .postContent__actions {
+        flex-direction: column;
+    }
 }
 
 .action-btn {
@@ -218,6 +272,12 @@
     margin-left: 20px;
     cursor: pointer;
     transition: all 100ms;
+    width: 300px;
+}
+@media (max-width: 600px) { 
+    .action-btn {
+        margin: 0 auto 30px auto;
+    }
 }
 
 .action-btn:hover {

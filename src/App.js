@@ -3,10 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Topic from './pages/Topic';
-import ExploreBtn from './components/ExploreBtn';
 import About from './pages/About';
 import React from 'react';
 import PostContent from './pages/PostContent';
+import Dashboard from './pages/Dashboard';
+import Post from './pages/Post';
+import Header from './components/Header';
+import HeaderMenu from './components/HeaderMenu';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -16,6 +21,9 @@ function App() {
 
                 {/* SIDEBAR */}
                 <Sidebar />
+
+                {/* HEADER */}
+                <HeaderMenu />
 
                 {/* HOME */}
                 <Route exact path='/'>
@@ -28,7 +36,7 @@ function App() {
                 </Route>
                 {/* TOPIC with POST */}
                 <Route exact path='/news&notices/:id'>
-                    <ExploreBtn />
+                    <Post topic='news&notices' />
                 </Route>
 
                 {/* TOPIC - article */}
@@ -37,16 +45,16 @@ function App() {
                 </Route>
                 {/* TOPIC with POST */}
                 <Route exact path='/articles/:id'>
-                    <ExploreBtn />
+                    <Post topic='articles' />
                 </Route>
 
                 {/* TOPIC - bookreview */}
-                <Route path='/bookreview'>
+                <Route exact path='/bookreview'>
                     <Topic topic='bookreview' />
                 </Route>
                 {/* TOPIC with POST */}
                 <Route exact path='/bookreview/:id'>
-                    <ExploreBtn />
+                    <Post topic='bookreview' />    
                 </Route>
 
                 {/* ABOUT */}
@@ -57,6 +65,21 @@ function App() {
                 {/* NEW */}
                 <Route exact path='/new'>
                     <PostContent />
+                </Route>
+
+                {/* ADMIN */}
+                <Route exact path='/dashboard'>
+                    <Dashboard />
+                </Route>
+
+                {/* LOGIN */}
+                <Route exact path='/login'>
+                    <Login />
+                </Route>
+
+                {/* REGISTER */}
+                <Route exact path='/register'>
+                    <Register />
                 </Route>
 
                 </div>

@@ -17,6 +17,13 @@
     background-color: white;
     box-shadow: 0px 0px 7px -6px rgba(0, 0, 0, 0.75);
 }
+@media (max-width: 600px) {
+    .newscard {
+        max-width: 350px;
+        min-width: 300px;
+        margin: 20px auto;
+    }  
+}
 
 
 
@@ -70,6 +77,12 @@
 .newscard:hover .newscard__header img {
     filter: brightness(.5);
     transform: scale(1.2);
+}
+@media (max-width: 600px) {
+    .newscard:hover .newscard__header img {
+        filter: none;
+        transform: none;
+    }
 }
 
 .newscard:hover .newscard__header .read__btn {

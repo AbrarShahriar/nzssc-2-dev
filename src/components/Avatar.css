@@ -27,3 +27,16 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+.avatar__img__large {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+}
+
+.avatar__img__large img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
