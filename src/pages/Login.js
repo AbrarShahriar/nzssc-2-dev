@@ -1,12 +1,25 @@
 import { Email, VpnKeySharp } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Login.css'
 import { Link } from 'react-router-dom'
+import  { useStateValue } from '../StateProvider'
+import { useHistory } from 'react-router-dom'
 
 function Login() {
     const handleSubmit = e => {
         e.preventDefault()
+        dispatch({
+            type: 'SET_USER',
+            user: 'Abrar Shahriar'
+        })
     }
+    const [{ user }, dispatch] = useStateValue()
+    const history = useHistory()
+    
+    useEffect(() => {
+        user && history.push('/')
+    }, [user])
+    
     return (
         <div className="login">
             <form>

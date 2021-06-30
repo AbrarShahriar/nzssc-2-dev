@@ -1,13 +1,10 @@
 import Result from '../components/Result';
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Topic.css'
-import { useParams } from 'react-router-dom'
-import { SearchOutlined } from '@material-ui/icons';
+import { FilterListOutlined, SearchOutlined } from '@material-ui/icons';
 import ss from '../images/ss.jpg'
-import { Divider } from '@material-ui/core';
-import ExploreBtn from '../components/ExploreBtn';
-import About from './About';
-
+import { Checkbox, Divider, IconButton, Radio } from '@material-ui/core';
+import { Modal } from '@material-ui/core'  
 
 const dummy = [
     {
@@ -82,12 +79,20 @@ const formatTopic = topic => {
 }
 
 function Topic({ topic }) {
-    const containerRef = useRef(null)
     
     const [posts, setPosts] = useState(dummy)
+    const [filterModal, setFilterModal] = useState(false)
+    const [selectedFilter, setSelectedFilter] = useState('title')
+
+    const handleFilterModalClose = () => {
+        setFilterModal(false)
+    }
+    const handleSelectedFilterChange = e => {
+        setSelectedFilter(e.target.value)
+        setFilterModal(false)
+    }
     
     useEffect(() => {
-        const container = containerRef.current
         setPosts(dummy)
     }, [topic])
 
@@ -159,15 +164,49 @@ function Topic({ topic }) {
     }
     
     return (
-        <div className='topic' ref={containerRef}>
+        <div className='topic'>
             <div className="topic__content">
                 
                 <div className="topic__header">
                     <h2>{formatTopic(topic)}</h2>
-                    <form className="topic__search">
-                        <SearchOutlined />
-                        <input type="text" name="search" />
-                    </form>
+                    <div className="search__filter">
+                        <form className="topic__search">
+                            <SearchOutlined />
+                            <input type="text" name="search" />
+                        </form>
+                        <IconButton onClick={() => setFilterModal(true)} >  
+                            <FilterListOutlined />
+                        </IconButton>
+                        <Modal
+                            open={filterModal}
+                            onClose={handleFilterModalClose} 
+                        >
+                            <div className="filter__modal">
+                                <div className="filter__content">
+                                    <h2>Search By: </h2>
+                                    <div className="radios">
+                                        <div className="radio">
+                                            <Radio
+                                                checked={selectedFilter === 'title'}
+                                                onChange={handleSelectedFilterChange}
+                                                value='title'
+                                            />
+                                            <span>Title</span>
+                                        </div>
+                                        <div className="radio">
+                                            <Radio
+                                                checked={selectedFilter === 'id'}
+                                                onChange={handleSelectedFilterChange}
+                                                value='id'
+                                            />
+                                            <span>ID</span>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </Modal>
+                    </div>
                 </div>
 
                 <Divider className='divider' />
