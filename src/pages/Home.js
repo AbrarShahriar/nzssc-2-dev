@@ -14,10 +14,13 @@ import Mitochondria from '../components/svg/Mitochondria'
 import Relativity from '../components/svg/Relativity'
 import Hero1 from '../components/Hero1'
 import Members from '../components/Members'
+import { useStateValue } from '../StateProvider'
+import Loader from '../components/Loader'
 
 const currentYear = new Date().getFullYear()
 
 const Home = React.memo(() => {
+    const [{ loading }] = useStateValue()
     return (
         <div className='home'>
 
@@ -35,17 +38,44 @@ const Home = React.memo(() => {
                     <Relativity svgClass='icon icon-7'/>
 
                     <Title title='news & notices' Icon={Announcement} />
-                    <CardRow type='news'/>
-                    <ExploreBtn title='See More' to='/news&notices'/>
+                    {loading.news 
+                    ? 
+                        <div className="loading__home">
+                            <Loader />
+                        </div>
+                    :
+                        <>
+                            <CardRow type='news'/>
+                            <ExploreBtn title='See More' to='/news&notices'/>
+                        </>
+                    }
 
 
                     <Title title='articles' Icon={LibraryBooksOutlined} />
-                    <CardRow type='article'/>
-                    <ExploreBtn to='/articles' />
+                    {loading.articles 
+                    ?  
+                        <div className="loading__home">
+                            <Loader />
+                        </div>
+                    :
+                        <>
+                            <CardRow type='article'/>
+                            <ExploreBtn to='/articles' />
+                        </>
+                    }
 
                     <Title title='book review' Icon={MenuBook} />
-                    <CardRow type='book'/>
-                    <ExploreBtn to='/bookreview' />
+                    {loading.bookReview 
+                    ? 
+                        <div className="loading__home">
+                            <Loader />
+                        </div> 
+                    :
+                        <>
+                            <CardRow type='book'/>
+                            <ExploreBtn to='/bookreview' />
+                        </>
+                    }
 
 
                     <Title title='members' Icon={GroupOutlined} year={currentYear}/>

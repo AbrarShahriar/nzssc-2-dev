@@ -55,18 +55,8 @@ const members = [
     },
 ]
 
-const rows = new Array(6)
-
-const getNextTwo = n => {
-    return [members[n-1], members[n]]
-}
-
 const getNextThree = n => {
     return [members[n-2], members[n-1], members[n]]
-}
-
-const oneRow = () => {
-    
 }
 
 function Members() {
@@ -99,7 +89,7 @@ function Members() {
                         return (
                             <div key={i} className='row'>
                                 {threeMembers.map((member, j) => {
-                                    if(j/3 != 0) {
+                                    if(j/3 !== 0) {
                                         return <Member ss={ss} direction='right' name={member.name} title={member.title} />
                                     } 
                                     return <Member ss={ss} direction='left' name={member.name} title={member.title} />
@@ -108,11 +98,7 @@ function Members() {
                         )
                     })}
                 </>
-                }
-
-                
-
-                
+                } 
                 
             </div>
             <div className="col"></div>

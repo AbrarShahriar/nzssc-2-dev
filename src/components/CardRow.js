@@ -7,8 +7,6 @@ import BookCard from './BookCard';
 import { useStateValue } from '../StateProvider'
 import moment from 'moment'
 
-const col = 3
-
 function CardRow({ type }) {
     const [{ news, articles, bookReviews }, dispatch] = useStateValue()
 

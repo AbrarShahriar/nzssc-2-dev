@@ -32,6 +32,7 @@ import 'tinymce/plugins/help'
 import { useStateValue } from '../StateProvider';
 import { db } from '../firebase'
 import firebase from 'firebase';
+import Loader from '../components/Loader';
 
 const allPlugins = [
   'advlist autolink lists link image charmap print preview anchor',
@@ -51,7 +52,7 @@ const showUsernameOrEmail = user => {
 }
 
 function PostContent() {
-    const [{ user, postDataDraft }, dispatch] = useStateValue()
+    const [{ user, postDataDraft, loading }, dispatch] = useStateValue()
 
     //editor stuff
     const editorRef = useRef(null);
@@ -106,119 +107,131 @@ function PostContent() {
         })
         .catch(err => alert(err.message))
     }
-    
-    if(!user) return <p>You dont have access to this page. Only logged in users can post content.</p>
-
 
     return (
         <div className='postContent'>
-           <div className="postContent__content">
-               <h1>Post Your Content</h1>
-
-                <div className="postContent__inputs">
-
-                    <div className="postContent__input">
-                        <span>Title *</span>
-                        <input value={postData.title} onChange={handlePostDataChange} required type="text" name='title' placeholder='Title of your post...' />
-                    </div>
-
-                    <div className="select-tag">
-                        <div className="postContent__input">
-                            <span>Select Topic *</span>
-                            <Select
-                                required
-                                native
-                                value={postData.topic}      
-                                onChange={handlePostDataChange} 
-                                variant='outlined'
-                                name='topic'
-                            >
-                                {(user.email === 'admin@gmail.com') &&
-                                    <option value='news'>News</option>
-                                }
-                                <option value='article'>Article</option>
-                                <option value='bookreview'>Book Review</option>
-                            </Select>
-                        </div>
-                        <div className="postContent__input">
-                            <span>Tags </span>
-                            <input placeholder='tag' type="text" name='title' />
-                        </div>
-                    </div>
-
-                    <div className="postContent__input editor">
-                        
-                        <span onClick={() => setCoverPhotoModal(true)} className='label__file__post' ><CloudUploadOutlined className='icon__upload' /> Upload/Link cover photo</span>
-
-                        <Modal
-                            open={coverPhotoModal}
-                            onClose={handleCoverPhotoModalClose}
-                        >
-                            <div className="modal__upload-link">
-                                <div className="upload-link-container">
-
-                                    <div className="upload-link__header">
-                                        <h3>Upload or Link</h3>
-                                        <span className='icon__close' onClick={handleCoverPhotoModalClose}><Add /></span>
-                                    </div>
-
-                                    
-
-                                    <div className="upload-link__body">
-                                        <input 
-                                            value={postData.cover} 
-                                            onChange={handlePostDataChange}
-                                            type="text" 
-                                            name='cover'
-                                            placeholder='Image Link...'
-                                        />
-
-                                        <p>or</p>
-
-                                        <label for='file' className='label__file modal__upload__btn' ><CloudUploadOutlined className='icon__upload' />Upload</label>
-                                        <input className='cover-photo' required type="file" name='file' id='file' />
-                                    </div>
-
-                                    <div className="upload-link__footer">
-                                        <IconButton onClick={handleCoverPhotoModalClose} >
-                                            <Done className='icon__okay'/>
-                                        </IconButton>
-                                    </div>
-                                    
+           {loading.auth
+           ?
+                <div className="loading__postContent">
+                    <Loader />
+                </div>
+           :
+                user 
+                ?
+                    <div className="postContent__content">
+                        <h1>Post Your Content</h1>
+    
+                        <div className="postContent__inputs">
+    
+                            <div className="postContent__input">
+                                <span>Title *</span>
+                                <input value={postData.title} onChange={handlePostDataChange} required type="text" name='title' placeholder='Title of your post...' />
+                            </div>
+    
+                            <div className="select-tag">
+                                <div className="postContent__input">
+                                    <span>Select Topic *</span>
+                                    <Select
+                                        required
+                                        native
+                                        value={postData.topic}      
+                                        onChange={handlePostDataChange} 
+                                        variant='outlined'
+                                        name='topic'
+                                    >
+                                        {(user.email === 'admin@gmail.com') &&
+                                            <option value='news'>News</option>
+                                        }
+                                        <option value='article'>Article</option>
+                                        <option value='bookreview'>Book Review</option>
+                                    </Select>
+                                </div>
+                                <div className="postContent__input">
+                                    <span>Tags </span>
+                                    <input placeholder='tag' type="text" name='title' />
                                 </div>
                             </div>
-                        </Modal>
-                    </div>
-
-                    <div className="postContent__input">
-                        <span>Post Body *</span>
-                        
-                        <Editor
-                            // apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
-                            onInit={handleReady}
-                            initialValue={postData.body}
-                            init={{
-                            height: 500,
-                            menubar: false,
-                            plugins: pluginsUsed,
-                            toolbar: 'undo redo | formatselect | link | ' +
-                            'bold italic backcolor | image media |  alignleft aligncenter ' +
-                            'alignright alignjustify | bullist numlist outdent indent | ' +
-                            'removeformat | help',
-                            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-                            }}
-                        />
-
-                        <div className="postContent__actions">
-                            <button onClick={handleSave} className='save-as-draft action-btn'>Save as draft</button>
-                            <button onClick={handlePublish} className='publish action-btn'>Publish</button>
+    
+                            <div className="postContent__input editor">
+                                
+                                <span onClick={() => setCoverPhotoModal(true)} className='label__file__post' ><CloudUploadOutlined className='icon__upload' /> Upload/Link cover photo</span>
+    
+                                <Modal
+                                    open={coverPhotoModal}
+                                    onClose={handleCoverPhotoModalClose}
+                                >
+                                    <div className="modal__upload-link">
+                                        <div className="upload-link-container">
+    
+                                            <div className="upload-link__header">
+                                                <h3>Upload or Link</h3>
+                                                <span className='icon__close' onClick={handleCoverPhotoModalClose}><Add /></span>
+                                            </div>
+    
+                                            
+    
+                                            <div className="upload-link__body">
+                                                <input 
+                                                    value={postData.cover} 
+                                                    onChange={handlePostDataChange}
+                                                    type="text" 
+                                                    name='cover'
+                                                    placeholder='Image Link...'
+                                                />
+    
+                                                <p>or</p>
+    
+                                                <label for='file' className='label__file modal__upload__btn' ><CloudUploadOutlined className='icon__upload' />Upload</label>
+                                                <input className='cover-photo' required type="file" name='file' id='file' />
+                                            </div>
+    
+                                            <div className="upload-link__footer">
+                                                <IconButton onClick={handleCoverPhotoModalClose} >
+                                                    <Done className='icon__okay'/>
+                                                </IconButton>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </Modal>
+                            </div>
+    
+                            <div className="postContent__input">
+                                <span>Post Body *</span>
+                                
+                                <Editor
+                                    // apiKey="myfnrt2tanaib58d4bteam4av4hu084vxinmrlekti85rp4k"
+                                    onInit={handleReady}
+                                    initialValue={postData.body}
+                                    init={{
+                                    height: 500,
+                                    menubar: false,
+                                    plugins: pluginsUsed,
+                                    toolbar: 'undo redo | formatselect | link | ' +
+                                    'bold italic backcolor | image media |  alignleft aligncenter ' +
+                                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                                    'removeformat | help',
+                                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+                                    }}
+                                />
+    
+                                <div className="postContent__actions">
+                                    <button onClick={handleSave} className='save-as-draft action-btn'>Save as draft</button>
+                                    <button onClick={handlePublish} className='publish action-btn'>Publish</button>
+                                </div>
+                            </div>
+    
                         </div>
                     </div>
-
-                </div>
-           </div>
+                :
+                    <div className='warning'>
+                        <h2>You need to be logged in to post your content!</h2>
+                    </div>
+           }
         </div>
     )
 }
 
 export default PostContent
+
+{/*  */}

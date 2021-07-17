@@ -1,10 +1,9 @@
 import React from 'react'
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-// import 'react-tabs/style/react-tabs.css'
 import { LoginModal } from './LoginModal';
 import { SignupModal } from './SignupModal';
 import './AuthTabs.css'
-import { Add, Email, VpnKeySharp } from "@material-ui/icons";
+import { Add } from "@material-ui/icons";
 
 
 function AuthTabs({ handleLoginModalState }) {

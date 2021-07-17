@@ -1,7 +1,7 @@
 import React from 'react'
 import './SidebarOption.css'
 import Fade from "react-reveal/Fade";
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function SidebarOption({ to, name, Icon, delay }) {
     const history = useHistory()

@@ -4,6 +4,7 @@ import './Dashboard.css'
 import ss from '../images/ss.jpg'
 import DashboardPost from '../components/DashboardPost'
 import { useStateValue } from '../StateProvider'
+import Loader from '../components/Loader'
 
 const members = [
     {
@@ -113,45 +114,52 @@ const articles = [
     },
 ]
 
-const getNextTwo = n => {
-    return [members[n-1], members[n]]
-}
-
 function Dashboard() {
 
-    const [{ user }] = useStateValue()
-
-    if(user.email !== 'admin@gmail.com') return <p>You dont have access to this page. Only admin can visit this page</p>
+    const [{ user, loading }] = useStateValue()
 
     return (
         <div className='dashboard'>
-            <div className="dashboard__content">
-
-                <h1 className='h1__members'>Members</h1>
-                <div className="dashboard__members">
-
-                    {members.map((member, i) => (
-                        <DashboardMember key={i} img={ss} name={member.name} title={member.title} />
-                    ))}
-
+           {loading.auth
+           ?
+                <div className="loading__dashboard">
+                    <Loader />
                 </div>
+           :
+                (user && user.email === 'admin@gmail.com')
+                ?
+                    <div className="dashboard__content">
 
-                <h1 className='h1__members'>Pending Posts ({articles.length})</h1>
-                <div className="dashboard__posts">
-                    
-                    {articles.map((article, i) => (
-                        <DashboardPost 
-                            img={article.img}
-                            authorName={article.authorName}
-                            title={article.title}
-                            id={i}
-                            key={i}
-                            topic={article.topic}
-                        />
-                    ))}
-                 </div>                        
+                        <h1 className='h1__members'>Members</h1>
+                        <div className="dashboard__members">
 
-            </div>
+                            {members.map((member, i) => (
+                                <DashboardMember key={i} img={ss} name={member.name} title={member.title} />
+                            ))}
+
+                        </div>
+
+                        <h1 className='h1__members'>Pending Posts ({articles.length})</h1>
+                        <div className="dashboard__posts">
+                            
+                            {articles.map((article, i) => (
+                                <DashboardPost 
+                                    img={article.img}
+                                    authorName={article.authorName}
+                                    title={article.title}
+                                    id={i}
+                                    key={i}
+                                    topic={article.topic}
+                                />
+                            ))}
+                        </div>                        
+
+                    </div>
+                :
+                    <div className='warning'>
+                        <h2>You dont have access to this page. Only admin can visit this page!</h2>
+                    </div>
+            }
         </div>   
     ) 
 }

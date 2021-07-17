@@ -1,4 +1,4 @@
-import { AnnouncementOutlined, LibraryBooksOutlined, HomeOutlined, GroupOutlined, MenuBookOutlined, MoreVertSharp, AddBoxOutlined, DashboardOutlined, PersonAddOutlined } from '@material-ui/icons'
+import { AnnouncementOutlined, LibraryBooksOutlined, HomeOutlined, GroupOutlined, MenuBookOutlined, MoreVertSharp, AddBoxOutlined, DashboardOutlined, PersonAddOutlined, ExitToApp } from '@material-ui/icons'
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
@@ -11,6 +11,7 @@ import { useStateValue } from "../StateProvider";
 
 
 import './HeaderMenu.css'
+import { auth } from '../firebase';
 
 const routes = [
     {
@@ -88,7 +89,7 @@ export default function HeaderMenu() {
   };
 
   const history = useHistory()
-  const [{ user }, dispatch] = useStateValue() 
+  const [{ user }] = useStateValue() 
   
   const handleMenuItemClick = (route) => {
     history.push(route)
@@ -128,12 +129,21 @@ export default function HeaderMenu() {
             </StyledMenuItem>
         }
 
-       {user &&
+       {(user && user.email === 'admin@gmail.com') &&
            <StyledMenuItem onClick={e => handleMenuItemClick('/dashboard')} >
             <ListItemIcon>
                 <DashboardOutlined fontSize="small" />
             </ListItemIcon>
             <ListItemText primary={'Dashboard'} />
+            </StyledMenuItem>
+        }
+
+        {user &&
+            <StyledMenuItem onClick={e => auth.signOut()} >
+            <ListItemIcon>
+                <ExitToApp fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary={'Logout'} />
             </StyledMenuItem>
         }
      

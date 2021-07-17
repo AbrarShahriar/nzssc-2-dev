@@ -1,4 +1,4 @@
-import { Add, Email, VpnKeySharp } from "@material-ui/icons";
+import { Email, VpnKeySharp } from "@material-ui/icons";
 import React, { useState } from "react";
 import './SignupModal.css'
 import loginBg from '../images/login-full.png'
@@ -10,7 +10,7 @@ export function SignupModal({
 }) {
 
     const [signupLoaded, setsignupLoaded] = useState(false)
-    const [{ user }, dispatch] = useStateValue()
+    const [state, dispatch] = useStateValue()
 
     const [userCred, setUserCred] = useState({
         email: '',

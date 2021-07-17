@@ -15,18 +15,22 @@ import { auth, db } from './firebase'
 import { useStateValue } from './StateProvider';
 
 function App() {
-    const [{ user, news, articles, bookReviews }, dispatch] = useStateValue()
+    const [{ loading }, dispatch] = useStateValue()
     useEffect(() => {
         auth.onAuthStateChanged(loggedInUser => {
             dispatch({
                 type: 'SET_USER',
                 user: loggedInUser
             })
+            dispatch({
+                type: 'SET_LOADING/AUTH',
+                loading: { auth: false }
+            })
         })
 
         //articles
         db.collection('article')
-        .orderBy('timestamp', 'desc').limit(3).get()
+        .orderBy('timestamp', 'desc').where('published', '==', true).limit(3).get()
         .then(docs => {
             let articlesArr = []
             docs.forEach(doc => articlesArr.push({
@@ -36,6 +40,10 @@ function App() {
             dispatch({
                 type: 'SET_ARTICLES',
                 articles: articlesArr
+            })
+            dispatch({
+                type: 'SET_LOADING/ARTICLES',
+                loading: { articles: false }
             })
         })
         //news
@@ -51,10 +59,14 @@ function App() {
                 type: 'SET_NEWS',
                 news: newsArr
             })
+            dispatch({
+                type: 'SET_LOADING/NEWS',
+                loading: { news: false }
+            })
         })
         //bookreview
         db.collection('bookreview')
-        .orderBy('timestamp', 'desc').limit(3).get()
+        .orderBy('timestamp', 'desc').where('published', '==', true).limit(3).get()
         .then(docs => {
             let bookReviewArr = []
             docs.forEach(doc => bookReviewArr.push({
@@ -64,6 +76,10 @@ function App() {
             dispatch({
                 type: 'SET_BOOKREVIEWS',
                 bookReviews: bookReviewArr
+            })
+            dispatch({
+                type: 'SET_LOADING/BOOKREVIEW',
+                loading: { bookReview: false }
             })
         })
     }, [])
@@ -85,7 +101,7 @@ function App() {
 
                 {/* TOPIC - news&notices */}
                 <Route exact path='/news&notices'>
-                    <Topic topic='news&notices' />
+                    <Topic topic='news' />
                 </Route>
                 {/* TOPIC with POST */}
                 <Route exact path='/news&notices/:id'>
@@ -94,7 +110,7 @@ function App() {
 
                 {/* TOPIC - article */}
                 <Route exact path='/articles'>
-                    <Topic topic='articles' />
+                    <Topic topic='article' />
                 </Route>
                 {/* TOPIC with POST */}
                 <Route exact path='/articles/:id'>

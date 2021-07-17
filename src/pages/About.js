@@ -1,8 +1,6 @@
 import React from 'react'
 import './About.css'
 import logo from '../images/logo.png'
-import Wave from '../components/svg/Wave'
-import wave from '../images/wave.svg'
 
 function About() {
     return (

@@ -8,6 +8,7 @@ import { useStateValue } from "../StateProvider";
 import bg from '../images/sidebar-bg1.png'
 import AuthTabs from './AuthTabs';
 import { auth } from '../firebase'
+import Loader from './Loader'
 
 const routes = [
     {
@@ -44,7 +45,7 @@ const showUsernameOrEmail = user => {
 
 function Sidebar() {
 
-    const [{ user }, dispatch] = useStateValue()
+    const [{ user, loading }] = useStateValue()
 
     const [loginModalState, setloginModalState] = useState(false)
 
@@ -57,7 +58,14 @@ function Sidebar() {
     return (
         <div className='sidebar '>
 
-            <div className="sidebar__header">
+            {loading.auth 
+            ?
+                <div className="loading__sidebar">
+                    <Loader />
+                </div>
+            :
+            <>
+                <div className="sidebar__header">
                 <div className="sidebar__header__container">
                     
                     {user
@@ -147,6 +155,9 @@ function Sidebar() {
                     handleLoginModalState={handleLoginModalState}
                 />
             </Modal>
+            
+            </>
+            }
 
         </div>
     )
