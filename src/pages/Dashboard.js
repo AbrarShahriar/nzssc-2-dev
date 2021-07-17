@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import DashboardMember from '../components/DashboardMember'
 import './Dashboard.css'
 import ss from '../images/ss.jpg'
 import DashboardPost from '../components/DashboardPost'
-
+import { useStateValue } from '../StateProvider'
 
 const members = [
     {
@@ -119,7 +119,9 @@ const getNextTwo = n => {
 
 function Dashboard() {
 
-    
+    const [{ user }] = useStateValue()
+
+    if(user.email !== 'admin@gmail.com') return <p>You dont have access to this page. Only admin can visit this page</p>
 
     return (
         <div className='dashboard'>

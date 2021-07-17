@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import './SignupModal.css'
 import loginBg from '../images/login-full.png'
 import { useStateValue } from "../StateProvider";
-
+import { auth } from '../firebase'
 
 export function SignupModal({
   handleLoginModalState
@@ -12,17 +12,38 @@ export function SignupModal({
     const [signupLoaded, setsignupLoaded] = useState(false)
     const [{ user }, dispatch] = useStateValue()
 
+    const [userCred, setUserCred] = useState({
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    const handleUserCredChange = e => {
+        setUserCred({
+            ...userCred,
+            [e.target.name]: e.target.value
+        })
+    }
+
 
     const handleSubmit = e => {
         e.preventDefault()
         e.stopPropagation()
 
-        dispatch({
-            type: 'SET_USER',
-            user: 'Abrar'
-        })
+        if(userCred.password === userCred.confirmPassword) {
+            auth.createUserWithEmailAndPassword(userCred.email, userCred.password)
+            .then(userData => {
+                dispatch({
+                    type: 'SET_USER',
+                    user: userData.user
+                })
+                handleLoginModalState()
+            })
+            .catch(err => alert(err.message))
+        } else {
+            alert('Passwords dont match')
+        }
 
-        handleLoginModalState()
     }
 
     return (
@@ -42,15 +63,15 @@ export function SignupModal({
                         </div>
                         <div className="form__input">
                             <Email />
-                            <input type="email" name="email" placeholder='Email' />
+                            <input onChange={handleUserCredChange} value={userCred.email} type="email" name="email" placeholder='Email' />
                         </div>
                         <div className="form__input">
                             <VpnKeySharp />
-                            <input type="password" name="password" placeholder='Password' />
+                            <input onChange={handleUserCredChange} value={userCred.password} type="password" name="password" placeholder='Password' />
                         </div>
                         <div className="form__input">
                             <VpnKeySharp />
-                            <input type="password" name="confirm-password" placeholder='Confirm Password' />
+                            <input onChange={handleUserCredChange} value={userCred.confirmPassword} type="password" name="confirmPassword" placeholder='Confirm Password' />
                         </div>
 
                         <button onClick={handleSubmit}>Sign Up</button>

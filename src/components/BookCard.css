@@ -186,7 +186,7 @@
     cursor: pointer;
 }
 
-.bookcard__footer button {
+.mobile_read_btn {
     border: 1px solid #0F1245;
     padding: 10px 20px;
     background-color: #0F1245;
@@ -197,12 +197,12 @@
     font-weight: 700;
 }
 @media (min-width: 600px) {
-    .bookcard__footer button {
+    .mobile_read_btn {
         display: none;
     }
 }
 
-.bookcard__footer button:hover {
+.mobile_read_btn:hover {
     background-color: white;
     color: #0F1245;
 }

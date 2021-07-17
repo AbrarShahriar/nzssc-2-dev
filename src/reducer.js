@@ -1,10 +1,14 @@
 export const initialState = {
     user: null,
-    editorState: '',
-    postTitle: '',
-    postTopic: '',
-    postTags: '',
-    postCover: ''
+    postDataDraft: JSON.parse(localStorage.getItem('postDataDraft')) || {
+        title: '',
+        topic: 'article',
+        cover: '',
+        body: '',
+    },
+    articles: [],
+    bookReviews: [],
+    news: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -17,11 +21,30 @@ export const reducer = (state = initialState, action) => {
                 user: action.user
             }
         
-        case 'SET_EDITOR_STATE':
+        case 'SET_POST-DATA_DRAFT':
+            localStorage.setItem('postDataDraft', JSON.stringify(action.postDataDraft))
             return {
                 ...state,
-                editorState: action.editorState
+                postDataDraft: action.postDataDraft
             }
+
+            case 'SET_ARTICLES':
+                return {
+                    ...state,
+                    articles: action.articles
+                }
+
+            case 'SET_BOOKREVIEWS':
+                return {
+                    ...state,
+                    bookReviews: action.bookReviews
+                }
+
+            case 'SET_NEWS':
+                return {
+                    ...state,
+                    news: action.news
+                }
     
         default:
             return state

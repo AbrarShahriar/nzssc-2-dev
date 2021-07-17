@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import './LoginModal.css'
 import loginBg from '../images/login-full.png'
 import { useStateValue } from "../StateProvider";
-
+import { auth } from '../firebase'
 
 export function LoginModal({
   handleLoginModalState
@@ -12,17 +12,32 @@ export function LoginModal({
     const [loginLoaded, setloginLoaded] = useState(false)
     const [{ user }, dispatch] = useStateValue()
 
+    const [userCred, setUserCred] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleUserCredChange = e => {
+        setUserCred({
+            ...userCred,
+            [e.target.name]: e.target.value
+        })
+    }
+
 
     const handleSubmit = e => {
         e.preventDefault()
         e.stopPropagation()
 
-        dispatch({
-            type: 'SET_USER',
-            user: 'Abrar'
+        auth.signInWithEmailAndPassword(userCred.email, userCred.password)
+        .then(userData => {
+            dispatch({
+                type: 'SET_USER',
+                user: userData.user
+            })
+            handleLoginModalState()
         })
-
-        handleLoginModalState()
+        .catch(err => alert(err.message))
     }
 
     return (
@@ -34,11 +49,11 @@ export function LoginModal({
                     <div className="form__inputs">
                         <div className="form__input">
                             <Email />
-                            <input type="email" name="email" placeholder='Email' />
+                            <input onChange={handleUserCredChange} value={userCred.email} type="email" name="email" placeholder='Email' />
                         </div>
                         <div className="form__input">
                             <VpnKeySharp />
-                            <input type="password" name="password" placeholder='Password' />
+                            <input onChange={handleUserCredChange} value={userCred.password} type="password" name="password" placeholder='Password' />
                         </div>
 
                         <button onClick={handleSubmit}>Log in</button>

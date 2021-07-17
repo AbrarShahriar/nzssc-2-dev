@@ -2,21 +2,22 @@ import { Favorite, FavoriteBorder, MoreVert } from '@material-ui/icons'
 import React from 'react'
 import './ArticleCard.css'
 import Fade from "react-reveal/Fade";
-import { IconButton, MenuList } from '@material-ui/core';
 import Avatar from './Avatar'
+import { Link } from 'react-router-dom'
 
-function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorImg, tag }) {
+
+function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorImg, tag, aid }) {
     return (
         <Fade bottom delay={delay*100}>
             <div className='articlecard'>
 
                 <div className="articlecard__header">
                     {img && <img src={img} />}
-                    <button className='read__btn'>Read</button>
+                    <Link target='_blank' to={`/articles/${aid}`} className='read__btn'>Read</Link>
                 </div>
 
                 <div className="articlecard__body">
-                    <span className='tag'>{tag}</span>
+                    <span className='tag'>{tag || ''}</span>
                     <h2>{title}</h2>
                     <div className="author__info">
                         <Avatar 
@@ -35,9 +36,9 @@ function ArticleCard({ title, img, likes, timestamp, delay, authorName, authorIm
                 <div className="articlecard__footer">
                     <div className="likes">
                         <FavoriteBorder />
-                        <span>{likes}</span>
+                        <span>{likes || 0}</span>
                     </div>
-                    <button>Read</button>
+                    <Link className='mobile_read_btn' target='_blank' to={`/articles/${aid}`} >Read</Link>
                 </div>
 
             </div>

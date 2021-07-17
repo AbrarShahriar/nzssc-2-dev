@@ -2,26 +2,28 @@ import React from 'react'
 import './CardRow.css'
 import NewsCard from './NewsCard'
 import ArticleCard from './ArticleCard'
-
-import ss from "../images/banner.png";
 import ss1 from "../images/ss.jpg";
 import BookCard from './BookCard';
+import { useStateValue } from '../StateProvider'
+import moment from 'moment'
 
 const col = 3
 
 function CardRow({ type }) {
-
+    const [{ news, articles, bookReviews }, dispatch] = useStateValue()
 
     if(type === 'news') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(col)).map((card, index) => (
+                {news.map((singleNews, index) => (
                     <NewsCard 
-                        title='Shamim e ki bollo!!'
-                        img={ss1}
-                        likes={32}
-                        timestamp='1 hour ago'
+                        title={singleNews.title}
+                        img={singleNews.cover}
+                        likes={singleNews.likes}
+                        timestamp={singleNews.timestamp ? moment(singleNews.timestamp?.seconds*1000).fromNow() : 'just now'}
                         delay={index}
+                        key={index}
+                        nid={singleNews.id}
                     />
                 ))}
             </div>
@@ -29,15 +31,17 @@ function CardRow({ type }) {
     } else if (type === 'article') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(col)).map((card, index) => (
+                {articles.map((article, index) => (
                     <ArticleCard 
                         tag='physics'
-                        title='Kheladhula sikhun Shamim theke 10ti upaye'
-                        authorName='AbrarShahriar'
-                        img={ss1}
-                        likes={547}
-                        timestamp='1 hour ago'
+                        title={article.title}
+                        authorName={article.authorName}
+                        img={article.cover}
+                        likes={article.likes}
+                        timestamp={article.timestamp ? moment(article.timestamp?.seconds*1000).fromNow() : 'just now'}
                         delay={index}
+                        key={index}
+                        aid={article.id}
                     />
                 ))}
             </div>
@@ -45,15 +49,16 @@ function CardRow({ type }) {
     } else if (type === 'book') {
         return (
             <div className='cardrow'>
-                {Array.from(new Array(col)).map((card, index) => (
+                {bookReviews.map((bookReview, index) => (
                     <BookCard
-                        authorName='AbrarShahriar'
-                        title='Belly Dance 101'
-                        writer='Mehedi Hasan Shamim'
-                        img={ss1}
-                        likes={547}
-                        timestamp='1 hour ago'
+                        authorName={bookReview.authorName}
+                        title={bookReview.title}
+                        img={bookReview.cover}
+                        likes={bookReview.likes}
+                        timestamp={bookReview.timestamp ? moment(bookReview.timestamp?.seconds*1000).fromNow() : 'just now'}
                         delay={index}
+                        key={index}
+                        bid={bookReview.id}
                     />
                 ))}
             </div>

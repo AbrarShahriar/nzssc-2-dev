@@ -8,7 +8,7 @@ function About() {
     return (
         <div className='about'>
             <div className="about__content">
-                <img className='wave' src={wave} alt=""/>
+                <div className='wave' />
                 <div className="logo__withText">
                     <img src={logo} alt=""/>
                     <div className="banner__title">

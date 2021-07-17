@@ -1,9 +1,8 @@
 import React from 'react'
 import CardRow from '../components/CardRow'
-import Hero from '../components/Hero'
 import Title from '../components/Title'
 import './Home.css'
-import { Announcement, Email, ExitToApp, Facebook, Group, GroupOutlined, LibraryBooksOutlined, MenuBook, Message } from '@material-ui/icons'
+import { Announcement, GroupOutlined, LibraryBooksOutlined, MenuBook } from '@material-ui/icons'
 import bg from '../images/hero-bg1.png'
 import ExploreBtn from '../components/ExploreBtn'
 import Atom from '../components/svg/Atom'
@@ -17,14 +16,11 @@ import Hero1 from '../components/Hero1'
 import Members from '../components/Members'
 
 const currentYear = new Date().getFullYear()
-console.log(currentYear);
-
 
 const Home = React.memo(() => {
     return (
         <div className='home'>
 
-            {/* <Hero /> */}
             <Hero1 />
             
             <div className="home__content__pos">

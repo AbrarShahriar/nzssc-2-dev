@@ -77,10 +77,7 @@ export default function Tiny() {
         }}
       />
 
-      <div className="postContent__actions">
-          <button onClick={handleSave} className='save-as-draft action-btn'>Save as draft</button>
-          <button className='publish action-btn'>Publish</button>
-      </div>
+      
     </>
   );
 }
