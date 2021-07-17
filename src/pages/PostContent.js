@@ -45,6 +45,11 @@ const pluginsUsed = [
   'media help'
 ]
 
+const showUsernameOrEmail = user => {
+    if(!user.displayName) return user.email.split('@')[0]
+    return user.displayName
+}
+
 function PostContent() {
     const [{ user, postDataDraft }, dispatch] = useStateValue()
 
@@ -93,7 +98,8 @@ function PostContent() {
 
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
             published: false,
-            likes: 0
+            likes: 0,
+            authorName: showUsernameOrEmail(user)
         })
         .then(docRef => {
             alert('Successful')
